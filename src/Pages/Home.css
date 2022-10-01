@@ -1,0 +1,20 @@
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.835)),
+    url("../Assets/WallE.jpg");
+  background-size: cover;
+  height: 100vh;
+  color: white;
+}
+
+td {
+  color: white !important;
+}
+
+thead {
+  color: white;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
