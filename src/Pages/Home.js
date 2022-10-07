@@ -25,7 +25,6 @@ const Home = () => {
   const filterByRobotId = async (value) => {
     allFetchedRobots = await allRobots.filter( item => item.robotId.includes(value.toLowerCase()))
     setTempRobot([...allFetchedRobots]);
-    console.log(allFetchedRobots);
   }
 
   const setSorting = async (value) => {
