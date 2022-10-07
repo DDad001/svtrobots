@@ -19,6 +19,7 @@ const Home = () => {
   const getAllRobots = async () => {
     allFetchedRobots = await getRobots();
     setAllRobots([...allFetchedRobots]);
+    setTempRobot([...allFetchedRobots]);
   };
 
   const filterByRobotId = async (value) => {
