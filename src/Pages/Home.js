@@ -8,6 +8,9 @@ import tunes from "../Assets/tunes.mp3";
 
 const Home = () => {
   const [allRobots, setAllRobots] = useState([]);
+  // const [input, setInput] = useState("");
+  const [tempRobot, setTempRobot] = useState([]);
+
   let allFetchedRobots = [];
 
   useEffect(() => {
@@ -16,8 +19,17 @@ const Home = () => {
 
   const getAllRobots = async () => {
     allFetchedRobots = await getRobots();
-    setAllRobots([...allFetchedRobots]);
+    // let newArray = [];
+    // allFetchedRobots.students.map((robot) => {robot.robotId; newArray.push(robot)});
+    // setTempRobot(newArray);
+    setTempRobot([...allFetchedRobots]);
   };
+
+  const filterByRobotId = async (value) => {
+    allFetchedRobots = await allRobots.filter( item => item.robotId.includes(value.toLowerCase()))
+    setTempRobot([...allFetchedRobots]);
+    console.log(allFetchedRobots);
+  }
 
   const setSorting = async (value) => {
     if (value == "1") {
@@ -33,7 +45,7 @@ const Home = () => {
     } else if (value == "5") {
       allFetchedRobots = await allRobots.sort((a, b) => a.x - b.x);
     }
-    setAllRobots([...allFetchedRobots]);
+    setTempRobot([...allFetchedRobots]);
   };
 
   return (
@@ -45,7 +57,7 @@ const Home = () => {
       </Row>
       <Row>
         <Col>
-          <p>Listen to some tunes while you check my work :)</p>
+          <p>Listen to some tunes while you check my work</p>
           <audio controls>
             <source src={tunes} type="audio/mpeg" />
           </audio>
@@ -66,6 +78,15 @@ const Home = () => {
         </Col>
       </Row>
       <Row>
+        <Col lg={12}>
+           <input
+              onChange={({ target }) => filterByRobotId(target.value)}
+              type="text"
+              placeholder="Filter by robot Id"
+            />
+        </Col>
+      </Row>
+      <Row>
         <Col lg={12} className="p-5">
           <Table striped bordered hover>
             <thead>
@@ -77,7 +98,7 @@ const Home = () => {
               </tr>
             </thead>
 
-            {allRobots.map((robot, idx) => {
+            {tempRobot.map((robot, idx) => {
               return (
                 <>
                   <tbody key={idx}>

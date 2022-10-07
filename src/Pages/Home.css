@@ -18,3 +18,13 @@ thead {
   display: flex;
   justify-content: center;
 }
+
+input{
+  width: 30rem!important;
+  height: 2rem!important;
+  border-radius: 10px;
+}
+
+input::placeholder{
+  color: black;
+}
