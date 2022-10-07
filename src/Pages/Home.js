@@ -8,7 +8,6 @@ import tunes from "../Assets/tunes.mp3";
 
 const Home = () => {
   const [allRobots, setAllRobots] = useState([]);
-  // const [input, setInput] = useState("");
   const [tempRobot, setTempRobot] = useState([]);
 
   let allFetchedRobots = [];
@@ -19,10 +18,7 @@ const Home = () => {
 
   const getAllRobots = async () => {
     allFetchedRobots = await getRobots();
-    // let newArray = [];
-    // allFetchedRobots.students.map((robot) => {robot.robotId; newArray.push(robot)});
-    // setTempRobot(newArray);
-    setTempRobot([...allFetchedRobots]);
+    setAllRobots([...allFetchedRobots]);
   };
 
   const filterByRobotId = async (value) => {
